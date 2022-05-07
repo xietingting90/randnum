@@ -23,11 +23,11 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       
-      # # https://github.com/marketplace/actions/docker-setup-buildx
+      # https://github.com/marketplace/actions/docker-setup-buildx
       # - name: Install Docker
       #   uses: docker/setup-buildx-action@v1
       
-      # # https://github.com/marketplace/actions/build-and-push-docker-images
+      # https://github.com/marketplace/actions/build-and-push-docker-images
       # - name: Build docker container and push to hub.docker.io
       #   uses: docker/build-push-action@v2
       #   with:
@@ -35,12 +35,18 @@ jobs:
       #     file: ./Dockerfile
       #     push: true
       #     tags: ${{ secrets.DOCKERHUB_USERNAME }}/randimg:${{ github.ref_name }}
+       -
+        name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          tags: user/app:latest
 
-      # # https://github.com/marketplace/actions/slack-webhook
-      # - name: Post message on slack
-      #   uses: bluenovaio/action-slack@main 
-      #   with:
-      #     username: "Somik"
-      #     icon_emoji: ":robot_face:"
-      #     text:  "${{secrets.SLACK_MSG}} \nRepo: ${{ github.repositoryUrl }}\nImage name: ${{ secrets.DOCKERHUB_USERNAME }}/randimg:${{github.ref_name}}\nImage url: https://hub.docker.com/repository/docker/somik123/randimg"
+      # https://github.com/marketplace/actions/slack-webhook
+      - name: Post message on slack
+        uses: bluenovaio/action-slack@main 
+        with:
+          username: "Somik"
+          icon_emoji: ":robot_face:"
+          text:  "${{secrets.SLACK_MSG}} \nRepo: ${{ github.repositoryUrl }}\nImage name: ${{ secrets.DOCKERHUB_USERNAME }}/randimg:${{github.ref_name}}\nImage url: https://hub.docker.com/repository/docker/somik123/randimg"
           webhook_url: ${{ secrets.SLACK_WEBHOOK }}
