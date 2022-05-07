@@ -9,9 +9,7 @@ jobs:
   build_and_upload:
     runs-on: ubuntu-latest
 
-    
     steps:
-
       # https://github.com/marketplace/actions/checkout
       -
         name: Checkout the code from github repo
