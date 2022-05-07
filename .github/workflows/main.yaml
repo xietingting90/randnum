@@ -1,9 +1,9 @@
 name: Github 2 Dockerhub 2 Slack
 on:
-  push:
-    # types: [published]
-    # tag:
-    # - v1.*
+  release:
+    types: [published]
+    tag:
+    - v1.*
 
 jobs:
   build_and_upload:
@@ -39,7 +39,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "Name: XIE TINGTING\n Matriculation: A0249501J \n Email: e0941694@u.nus.edu \n Repo: https://github.com/xietingting90/randnum.git \n Image name: xietingting90/randnum:v0.3 \n Image URL: https://hub.docker.com/repository/docker/xietingting90/randnum"
+                    "text": "Name: XIE TINGTING\n Matriculation: A0249501J \n Email: e0941694@u.nus.edu \n Repo: git@github.com:xietingting90/randnum.git \n Image name: xietingting90/randnum:v0.3 \n Image URL: https://hub.docker.com/repository/docker/xietingting90/randnum"
                   }
                 }
               ]
