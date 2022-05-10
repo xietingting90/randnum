@@ -1,9 +1,9 @@
 name: Github 2 Dockerhub 2 Slack
 on:
   push:
-    types: [published]
-    tag:
-    - v1.*
+    # types: [published]
+    # tag:
+    # - v1.*
 
 jobs:
   build_and_upload:
