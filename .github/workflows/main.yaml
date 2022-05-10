@@ -1,9 +1,8 @@
 name: Github 2 Dockerhub 2 Slack
 on:
-  push:
-    # types: [published]
-    # tag:
-    # - v1.*
+  release:
+    types: [published]
+  
 
 jobs:
   build_and_upload:
@@ -30,7 +29,6 @@ jobs:
         id: slack
         uses: slackapi/slack-github-action@v1.18.0
         with:
-          # For posting a rich message using Block Kit
           payload: |
             {
               "text": "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
@@ -39,7 +37,7 @@ jobs:
                   "type": "section",
                   "text": {
                     "type": "mrkdwn",
-                    "text": "Name: XIE TINGTING \n Matriculation: A0249501J \n Email: xietingting-1990@hotmail.com \n Repo: git@github.com:xietingting90/randnum.git \n Image name: xietingting90/randnum:v0.3 \n Image URL: https://hub.docker.com/repository/docker/xietingting90/randnum"
+                    "text": "Name: XIE TINGTING \n Matriculation: A0249501J \n Email: xietingting-1990@hotmail.com \n Repo: ${{ github.repositoryUrl }} \n Image name:  xietingting90/randnum:${{ github.ref_name }} \n Image URL: https://hub.docker.com/repository/docker/xietingting90/randnum"
                   }
                 }
               ]
